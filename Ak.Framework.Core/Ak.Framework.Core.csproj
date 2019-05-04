@@ -2,11 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>sr2200</Authors>
+    <Copyright>Copyright (c) 2019 sr2200</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/sr2200/Ak.Framework.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sr2200/Ak.Framework.Core</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
     <PackageReference Include="System.Reflection.DispatchProxy" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
