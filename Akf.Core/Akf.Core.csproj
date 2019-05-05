@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>sr2200</Authors>
     <Copyright>Copyright (c) 2019 sr2200</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/sr2200/Ak.Framework.Core</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/sr2200/Ak.Framework.Core</RepositoryUrl>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/sr2200/Akf.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sr2200/Akf.Core</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

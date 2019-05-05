@@ -1,4 +1,4 @@
-﻿using Ak.Framework.Core.Aspect;
+﻿using Akf.Core.Aspect;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 
-namespace Ak.Framework.Core.Test.Aspect
+namespace Akf.Core.Test.Aspect
 {
     [Export(typeof(IAkAspectParts))]
     public class AkTestAspect : IAkAspectParts

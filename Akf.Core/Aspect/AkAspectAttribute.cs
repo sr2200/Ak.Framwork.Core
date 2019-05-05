@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ak.Framework.Core.Aspect
+namespace Akf.Core.Aspect
 {
     public class AkAspectAttribute : Attribute
     {

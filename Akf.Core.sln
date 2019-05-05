@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ak.Framework.Core", "Ak.Framework.Core\Ak.Framework.Core.csproj", "{3E524231-7E9A-479D-9D20-9881B11082B1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B27B19A0-E40E-4D08-B146-9DF08C99B7E5}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
@@ -12,7 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ak.Framework.Core.Test", "Ak.Framework.Core.Test\Ak.Framework.Core.Test.csproj", "{F7876CF0-164D-4D5E-B0EB-994228FE89D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akf.Core", "Akf.Core\Akf.Core.csproj", "{3E524231-7E9A-479D-9D20-9881B11082B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akf.Core.Test", "Akf.Core.Test\Akf.Core.Test.csproj", "{F7876CF0-164D-4D5E-B0EB-994228FE89D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

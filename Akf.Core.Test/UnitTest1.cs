@@ -1,10 +1,10 @@
-using Ak.Framework.Core.Aspect;
-using Ak.Framework.Core.Test.Aspect;
+using Akf.Core.Aspect;
+using Akf.Core.Test.Aspect;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
-namespace Ak.Framework.Core.Test
+namespace Akf.Core.Test
 {
     [TestClass]
     public class UnitTest1

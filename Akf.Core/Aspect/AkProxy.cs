@@ -4,7 +4,7 @@ using System.Composition.Hosting;
 using System.Reflection;
 using System.Text;
 
-namespace Ak.Framework.Core.Aspect
+namespace Akf.Core.Aspect
 {
     public class AkProxy<T> : DispatchProxy
     {
