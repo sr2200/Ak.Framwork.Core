@@ -1,4 +1,4 @@
-# Ak.Framework.Core
+# Akf.Core
 .NET Coreで作成したライブラリ群です。
 
 ---
