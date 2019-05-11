@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Akf.Core.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class AkAspectTest
     {
         [TestInitialize]
         public void init()
