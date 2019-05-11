@@ -52,9 +52,26 @@ namespace Akf.Core.Test
             Assert.AreEqual(10, conf.GetConfig<int>("section1", "data2"));
         }
 
-
         [TestMethod]
         public void TestMethod5()
+        {
+            string jsonFile = "appsettings.json";
+            AkJsonConfig.Init(jsonFile);
+            var conf = AkJsonConfig.Instance;
+            Assert.AreEqual(10, conf.GetConfig<short>("section1", "data2"));
+        }
+
+        [TestMethod]
+        public void TestMethod6()
+        {
+            string jsonFile = "appsettings.json";
+            AkJsonConfig.Init(jsonFile);
+            var conf = AkJsonConfig.Instance;
+            Assert.AreEqual(10, conf.GetConfig<long>("section1", "data2"));
+        }
+
+        [TestMethod]
+        public void TestMethod7()
         {
             string jsonFile = "appsettings.json";
             AkJsonConfig.Init(jsonFile);
