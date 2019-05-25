@@ -10,7 +10,7 @@ namespace Akf.Core.Test
     public class AkConfigTest
     {
         [TestInitialize]
-        public void init()
+        public void Init()
         {
             Console.WriteLine("init");
         }
