@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Composition.Hosting;
+using System.IO;
 using System.Reflection;
 using System.Text;
 
@@ -48,7 +49,14 @@ namespace Akf.Core.Aspect
         /// </summary>
         public AkProxy()
         {
-            AkAspectPartsList = AkAspectUtility.GetComposeParts();
+            if (File.Exists("appsettings.json"))
+            {
+                AkAspectPartsList = AkAspectUtility.GetComposePartsForSettingsFile("appsettings.json");
+            }
+            else
+            {
+                AkAspectPartsList = AkAspectUtility.GetComposePartsForCurrentAssembly();
+            }
         }
 
         /// <summary>

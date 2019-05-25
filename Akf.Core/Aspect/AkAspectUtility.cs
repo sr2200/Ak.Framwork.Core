@@ -1,12 +1,17 @@
 ﻿using Akf.Core.Aspect.Parts;
+using Akf.Core.Config;
 using System;
 using System.Collections.Generic;
 using System.Composition.Hosting;
 using System.Diagnostics;
+using System.Reflection;
 using System.Text;
 
 namespace Akf.Core.Aspect
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AkAspectUtility
     {
         /// <summary>
@@ -24,7 +29,7 @@ namespace Akf.Core.Aspect
         /// Gets the compose parts.
         /// </summary>
         /// <returns></returns>
-        internal static List<IAkAspectParts> GetComposeParts()
+        internal static List<IAkAspectParts> GetComposePartsForCurrentAssembly()
         {
             object parts = AkLocalContext.GetData(AkConstEnum.ComposeParts);
             if (parts == null)
@@ -48,11 +53,37 @@ namespace Akf.Core.Aspect
             return (List<IAkAspectParts>)parts;
         }
 
-        public static void Hoge()
+        /// <summary>
+        /// Gets the compose parts for settings file.
+        /// </summary>
+        /// <param name="jsonFile">The json file.</param>
+        /// <returns></returns>
+        internal static List<IAkAspectParts> GetComposePartsForSettingsFile(string jsonFile)
         {
-            AkLocalContext.SetData("", "");
-            AkLocalContext.GetData("");
-        }
+            object parts = AkLocalContext.GetData(AkConstEnum.ComposeParts);
+            if (parts == null)
+            {
+                List<IAkAspectParts> aspectPartsList = new List<IAkAspectParts>();
 
+                AkJsonConfig.Init(jsonFile);
+                var conf = AkJsonConfig.Instance;
+                string[] moduleArray = conf.GetConfigArray("AkAspect", "Modules");
+                foreach (var item in moduleArray)
+                {
+                    char[] separator = { '|' };
+                    string asmName = item.Split(separator)[0];
+                    Assembly asm = Assembly.Load(asmName);
+
+                    string typeName = item.Split(separator)[1];
+                    IAkAspectParts obj = (IAkAspectParts)asm.CreateInstance(typeName);
+
+                    aspectPartsList.Add(obj);
+                }
+                AkLocalContext.SetData(AkConstEnum.ComposeParts, aspectPartsList);
+                parts = aspectPartsList;
+            }
+            Debug.Assert(parts is List<IAkAspectParts>, "型不正");
+            return (List<IAkAspectParts>)parts;
+        }
     }
 }
