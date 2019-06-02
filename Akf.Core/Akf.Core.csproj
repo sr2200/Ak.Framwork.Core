@@ -13,6 +13,10 @@
     <AssemblyOriginatorKeyFile>Akf.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\YasuhisaAoki\Documents\Ak.workspace\020.GitHub\Akf.Core\Akf.Core\Akf.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Composition" Version="1.0.31" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />

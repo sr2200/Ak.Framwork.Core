@@ -1,0 +1,386 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Akf.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Akf.Core.AkDomain">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Akf.Core.AkLocalContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Akf.Core.AkLocalContext.state">
+            <summary>
+            The state
+            </summary>
+        </member>
+        <member name="M:Akf.Core.AkLocalContext.SetData(System.String,System.Object)">
+            <summary>
+            Sets the data.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Akf.Core.AkLocalContext.SetData(Akf.Core.AkConstEnum,System.Object)">
+            <summary>
+            Sets the data.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Akf.Core.AkLocalContext.GetData(System.String)">
+            <summary>
+            Gets the data.
+            </summary>
+            <param name="name">The name.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Akf.Core.Aspect.AkAspectAttribute">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="P:Akf.Core.Aspect.AkAspectAttribute.IsInjection">
+            <summary>
+            Gets or sets a value indicating whether this instance is injection.
+            </summary>
+            <value>
+              <c>true</c> if this instance is injection; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkAspectAttribute.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkAspectAttribute.#ctor(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="isExe"></param>
+        </member>
+        <member name="T:Akf.Core.Aspect.AkAspectUtility">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkAspectUtility.Create``1(``0)">
+            <summary>
+            Creates the specified instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="instance">The instance.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkAspectUtility.GetComposePartsForCurrentAssembly">
+            <summary>
+            CurrentDomainのAssemblyからAspectクラスを取得し、Cacheします。
+            </summary>
+            <returns>Aspectインスタンス一覧</returns>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkAspectUtility.GetComposePartsForSettingsFile(System.String)">
+            <summary>
+            設定ファイルからAspectクラスを取得し、Cacheします。
+            </summary>
+            <param name="jsonFile">The json file.</param>
+            <returns>Aspectインスタンス一覧</returns>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkAspectUtility.SaveToBinaryFile(System.Object,System.String)">
+            <summary>
+            Saves to binary file.
+            </summary>
+            <param name="obj">The object.</param>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="T:Akf.Core.Aspect.AkProxy`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:Akf.Core.Aspect.AkProxy`1._instance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Akf.Core.Aspect.AkProxy`1.AkAspectPartsList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkProxy`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Akf.Core.Aspect.AkProxy`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkProxy`1.Invoke(System.Reflection.MethodInfo,System.Object[])">
+            <summary>
+            メソッドを実行します。
+            </summary>
+            <param name="targetMethod">対象のメソッド情報</param>
+            <param name="args">引数</param>
+            <returns>呼び出されたメソッドの戻り値を格納している Object</returns>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkProxy`1.Create(`0)">
+            <summary>
+            
+            </summary>
+            <param name="instance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkProxy`1.SetParameters(`0)">
+            <summary>
+            
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkProxy`1.PreProcess(System.Guid,System.Reflection.MethodInfo,System.Object[])">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="targetMethod"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkProxy`1.PostProcess(System.Guid,System.Reflection.MethodInfo,System.Object[],System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="targetMethod"></param>
+            <param name="args"></param>
+            <param name="result"></param>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkProxy`1.ExceptionProcess(System.Guid,System.Reflection.MethodInfo,System.Object[],System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="targetMethod"></param>
+            <param name="args"></param>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.AkNoOperationAspect.PreProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[])">
+            <summary>
+            Pres the process.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.AkNoOperationAspect.PostProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[],System.Object)">
+            <summary>
+            Posts the process.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+            <param name="result">The result.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.AkNoOperationAspect.ExceptionProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[],System.Exception)">
+            <summary>
+            Exceptions the process.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+            <param name="ex">The ex.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Akf.Core.Aspect.Parts.AkReproductionData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Akf.Core.Aspect.Parts.AkReproductionData.AssemblyName">
+            <summary>
+            Gets or sets the name of the assembly.
+            </summary>
+            <value>
+            The name of the assembly.
+            </value>
+        </member>
+        <member name="P:Akf.Core.Aspect.Parts.AkReproductionData.TypeName">
+            <summary>
+            Gets or sets the type of the target.
+            </summary>
+            <value>
+            The type of the target.
+            </value>
+        </member>
+        <member name="P:Akf.Core.Aspect.Parts.AkReproductionData.MethodName">
+            <summary>
+            Gets or sets the target method information.
+            </summary>
+            <value>
+            The target method information.
+            </value>
+        </member>
+        <member name="P:Akf.Core.Aspect.Parts.AkReproductionData.Arguments">
+            <summary>
+            Gets or sets the arguments.
+            </summary>
+            <value>
+            The arguments.
+            </value>
+        </member>
+        <member name="T:Akf.Core.Aspect.Parts.IAkAspectParts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.IAkAspectParts.PreProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[])">
+            <summary>
+            Pres the process.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.IAkAspectParts.PostProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[],System.Object)">
+            <summary>
+            Posts the process.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.IAkAspectParts.ExceptionProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[],System.Exception)">
+            <summary>
+            Exceptions the process.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+            <param name="ex">The ex.</param>
+        </member>
+        <member name="T:Akf.Core.Config.AkJsonConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Akf.Core.Config.AkJsonConfig.configRoot">
+            <summary>
+            The configuration root
+            </summary>
+        </member>
+        <member name="F:Akf.Core.Config.AkJsonConfig.isInit">
+            <summary>
+            The is initialize
+            </summary>
+        </member>
+        <member name="M:Akf.Core.Config.AkJsonConfig.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:Akf.Core.Config.AkJsonConfig"/> class from being created.
+            </summary>
+        </member>
+        <member name="F:Akf.Core.Config.AkJsonConfig._Instance">
+            <summary>
+            The instance
+            </summary>
+        </member>
+        <member name="P:Akf.Core.Config.AkJsonConfig.Instance">
+            <summary>
+            Gets the instance.
+            </summary>
+            <value>
+            The instance.
+            </value>
+            <exception cref="T:System.ApplicationException">初期化されていません。</exception>
+        </member>
+        <member name="M:Akf.Core.Config.AkJsonConfig.Init(System.String)">
+            <summary>
+            Initializes the specified file path.
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="M:Akf.Core.Config.AkJsonConfig.GetConfig(System.String,System.String)">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <param name="section">The section.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Akf.Core.Config.AkJsonConfig.GetConfig``1(System.String,System.String)">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="section">The section.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Akf.Core.Config.AkJsonConfig.GetConfigArray(System.String,System.String)">
+            <summary>
+            Gets the configuration array.
+            </summary>
+            <param name="section">The section.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Akf.Core.Config.AkJsonConfig.GetConfig(System.String,System.String,System.String)">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <param name="section">The section.</param>
+            <param name="subSection">The sub section.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Akf.Core.Config.IAkConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Akf.Core.Config.IAkConfig.GetConfig(System.String,System.String)">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <param name="section">The section.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Akf.Core.Config.IAkConfig.GetConfig``1(System.String,System.String)">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="section">The section.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Akf.Core.Config.IAkConfig.GetConfigArray(System.String,System.String)">
+            <summary>
+            Gets the configuration array.
+            </summary>
+            <param name="section">The section.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Akf.Core.Config.IAkConfig.GetConfig(System.String,System.String,System.String)">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <param name="section">The section.</param>
+            <param name="subSection">The sub section.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

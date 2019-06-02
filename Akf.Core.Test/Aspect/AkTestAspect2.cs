@@ -13,7 +13,7 @@ namespace Akf.Core.Test.Aspect
     [Export(typeof(IAkAspectParts))]
     public class AkTestAspect2 : IAkAspectParts
     {
-        public void PreProcess(Guid id, MethodInfo targetMethod, object[] args)
+        public void PreProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args)
         {
             //Console.WriteLine($"{targetMethod.Name} を実行します。");
 
@@ -21,7 +21,7 @@ namespace Akf.Core.Test.Aspect
             //logList.Add($"{targetMethod.Name} を実行します。");
         }
 
-        public void PostProcess(Guid id, MethodInfo targetMethod, object[] args, object result)
+        public void PostProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args, object result)
         {
             //Console.WriteLine($"{targetMethod.Name} の実行が終了しました。");
 
@@ -29,7 +29,7 @@ namespace Akf.Core.Test.Aspect
             //logList.Add($"{targetMethod.Name} の実行が終了しました。");
         }
 
-        public void ExceptionProcess(Guid id, MethodInfo targetMethod, object[] args, Exception ex)
+        public void ExceptionProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args, Exception ex)
         {
             //Console.WriteLine("例外が発生しました。");
 

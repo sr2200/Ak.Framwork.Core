@@ -25,27 +25,7 @@ namespace Akf.Core.Aspect
         private List<IAkAspectParts> AkAspectPartsList { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="list">The list.</param>
-        public delegate void AspectPartsSettingHandler(List<IAkAspectParts> list);
-
-        /////// <summary>
-        /////// The aspect parts setting handler
-        /////// </summary>
-        ////private static AspectPartsSettingHandler aspectPartsSettingHandler = null;
-
-        /////// <summary>
-        /////// Sets the aspect parts setting handler.
-        /////// </summary>
-        /////// <param name="handler">The handler.</param>
-        ////public static void SetAspectPartsSettingHandler(AspectPartsSettingHandler handler)
-        ////{
-        ////    aspectPartsSettingHandler = handler;
-        ////}
-
-        /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="AkProxy{T}"/> class.
         /// </summary>
         public AkProxy()
         {
@@ -60,11 +40,11 @@ namespace Akf.Core.Aspect
         }
 
         /// <summary>
-        /// 
+        /// メソッドを実行します。
         /// </summary>
-        /// <param name="targetMethod"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
+        /// <param name="targetMethod">対象のメソッド情報</param>
+        /// <param name="args">引数</param>
+        /// <returns>呼び出されたメソッドの戻り値を格納している Object</returns>
         protected override object Invoke(MethodInfo targetMethod, object[] args)
         {
             Guid id = Guid.NewGuid();
@@ -136,7 +116,7 @@ namespace Akf.Core.Aspect
         {
             foreach (var item in AkAspectPartsList)
             {
-                item.PreProcess(id, targetMethod, args);
+                item.PreProcess<T>(id, targetMethod, _instance, args);
             }
         }
 
@@ -154,7 +134,7 @@ namespace Akf.Core.Aspect
         {
             foreach (var item in AkAspectPartsList)
             {
-                item.PostProcess(id, targetMethod, args, result);
+                item.PostProcess<T>(id, targetMethod, _instance, args, result);
             }
         }
 
@@ -172,7 +152,7 @@ namespace Akf.Core.Aspect
         {
             foreach (var item in AkAspectPartsList)
             {
-                item.ExceptionProcess(id, targetMethod, args, ex);
+                item.ExceptionProcess<T>(id, targetMethod, _instance, args, ex);
             }
         }
 

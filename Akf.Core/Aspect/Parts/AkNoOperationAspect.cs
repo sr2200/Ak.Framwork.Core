@@ -7,16 +7,17 @@ using System.Text;
 namespace Akf.Core.Aspect.Parts
 {
     [Export(typeof(IAkAspectParts))]
-    public class AkNoOperationAspect : IAkAspectParts
+    internal class AkNoOperationAspect : IAkAspectParts
     {
         /// <summary>
         /// Pres the process.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="targetMethod">The target method.</param>
+        /// <param name="instance"></param>
         /// <param name="args">The arguments.</param>
         /// <exception cref="NotImplementedException"></exception>
-        public void PreProcess(Guid id, MethodInfo targetMethod, object[] args)
+        public void PreProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args)
         {
             Console.WriteLine("{0} [{1}] {2}", 
                                 DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), 
@@ -29,10 +30,11 @@ namespace Akf.Core.Aspect.Parts
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="targetMethod">The target method.</param>
+        /// <param name="instance"></param>
         /// <param name="args">The arguments.</param>
         /// <param name="result">The result.</param>
         /// <exception cref="NotImplementedException"></exception>
-        public void PostProcess(Guid id, MethodInfo targetMethod, object[] args, object result)
+        public void PostProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args, object result)
         {
             Console.WriteLine("{0} [{1}] {2}",
                                 DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
@@ -45,10 +47,11 @@ namespace Akf.Core.Aspect.Parts
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="targetMethod">The target method.</param>
+        /// <param name="instance"></param>
         /// <param name="args">The arguments.</param>
         /// <param name="ex">The ex.</param>
         /// <exception cref="NotImplementedException"></exception>
-        public void ExceptionProcess(Guid id, MethodInfo targetMethod, object[] args, Exception ex)
+        public void ExceptionProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args, Exception ex)
         {
             Console.WriteLine("{0} [{1}] {2}",
                                 DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),

@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Composition.Hosting;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace Akf.Core.Aspect
@@ -26,9 +28,9 @@ namespace Akf.Core.Aspect
         }
 
         /// <summary>
-        /// Gets the compose parts.
+        /// CurrentDomainのAssemblyからAspectクラスを取得し、Cacheします。
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Aspectインスタンス一覧</returns>
         internal static List<IAkAspectParts> GetComposePartsForCurrentAssembly()
         {
             object parts = AkLocalContext.GetData(AkConstEnum.ComposeParts);
@@ -54,10 +56,10 @@ namespace Akf.Core.Aspect
         }
 
         /// <summary>
-        /// Gets the compose parts for settings file.
+        /// 設定ファイルからAspectクラスを取得し、Cacheします。
         /// </summary>
         /// <param name="jsonFile">The json file.</param>
-        /// <returns></returns>
+        /// <returns>Aspectインスタンス一覧</returns>
         internal static List<IAkAspectParts> GetComposePartsForSettingsFile(string jsonFile)
         {
             object parts = AkLocalContext.GetData(AkConstEnum.ComposeParts);
@@ -84,6 +86,36 @@ namespace Akf.Core.Aspect
             }
             Debug.Assert(parts is List<IAkAspectParts>, "型不正");
             return (List<IAkAspectParts>)parts;
+        }
+
+        /// <summary>
+        /// Saves to binary file.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <param name="filePath">The file path.</param>
+        internal static void SaveToBinaryFile(object obj, string filePath)
+        {
+            using (var fs = new FileStream(filePath,
+                                    FileMode.Create,
+                                    FileAccess.Write))
+            {
+                var bf = new BinaryFormatter();
+                //シリアル化して書き込む
+                bf.Serialize(fs, obj);
+            }
+        }
+
+        internal static object LoadFromBinaryFile(string path)
+        {
+            FileStream fs = new FileStream(path,
+                FileMode.Open,
+                FileAccess.Read);
+            BinaryFormatter f = new BinaryFormatter();
+            //読み込んで逆シリアル化する
+            object obj = f.Deserialize(fs);
+            fs.Close();
+
+            return obj;
         }
     }
 }
