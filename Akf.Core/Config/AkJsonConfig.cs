@@ -7,17 +7,40 @@ using System.Text;
 
 namespace Akf.Core.Config
 {
-    public sealed class AkJsonConfig
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed class AkJsonConfig : IAkConfig
     {
+        /// <summary>
+        /// The configuration root
+        /// </summary>
         private static IConfigurationRoot configRoot = null;
 
+        /// <summary>
+        /// The is initialize
+        /// </summary>
         private static bool isInit = false;
 
+        /// <summary>
+        /// Prevents a default instance of the <see cref="AkJsonConfig"/> class from being created.
+        /// </summary>
         private AkJsonConfig()
         {
         }
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static AkJsonConfig _Instance = null;
+ 
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
+        /// <value>
+        /// The instance.
+        /// </value>
+        /// <exception cref="ApplicationException">初期化されていません。</exception>
         public static AkJsonConfig Instance
         {
             get
@@ -30,6 +53,10 @@ namespace Akf.Core.Config
             }
         }
 
+        /// <summary>
+        /// Initializes the specified file path.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
         public static void Init(string filePath)
         {
             if (_Instance == null)
@@ -43,12 +70,25 @@ namespace Akf.Core.Config
             configRoot = builder.Build();
         }
 
+        /// <summary>
+        /// Gets the configuration.
+        /// </summary>
+        /// <param name="section">The section.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public string GetConfig(string section, string key)
         {
             var sec = configRoot.GetSection(section);
             return sec[key];
         }
 
+        /// <summary>
+        /// Gets the configuration.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="section">The section.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public T GetConfig<T>(string section, string key)
         {
             var sec = configRoot.GetSection(section);
@@ -89,12 +129,25 @@ namespace Akf.Core.Config
             }
         }
 
+        /// <summary>
+        /// Gets the configuration array.
+        /// </summary>
+        /// <param name="section">The section.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public string[] GetConfigArray(string section, string key)
         {
             var sec = configRoot.GetSection(section).GetSection(key);
             return sec.GetChildren().Select(x => x.Value).ToArray();
         }
 
+        /// <summary>
+        /// Gets the configuration.
+        /// </summary>
+        /// <param name="section">The section.</param>
+        /// <param name="subSection">The sub section.</param>
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
         public string GetConfig(string section, string subSection, string key)
         {
             var sec = configRoot.GetSection(section);

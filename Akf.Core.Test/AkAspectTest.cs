@@ -10,7 +10,7 @@ namespace Akf.Core.Test
     public class AkAspectTest
     {
         [TestInitialize]
-        public void init()
+        public void Init()
         {
             Console.WriteLine("init");
         }
@@ -18,7 +18,8 @@ namespace Akf.Core.Test
         [TestMethod]
         public void TestMethod1()
         {
-            var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+            //var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+            var cls = AkAspectUtility.Create<ILogicClass>(new LogicClass());
             Console.WriteLine(cls.Method("ほげほげ"));
 
             List<string> logList = GetLogList();
@@ -30,7 +31,8 @@ namespace Akf.Core.Test
         [TestMethod]
         public void TestMethod2()
         {
-            var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+            //var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+            var cls = AkAspectUtility.Create<ILogicClass>(new LogicClass());
             Console.WriteLine(cls.Method2("ほげほげ"));
 
             List<string> logList = GetLogList();
@@ -41,7 +43,8 @@ namespace Akf.Core.Test
         [TestMethod]
         public void TestMethod3()
         {
-            var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+            //var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+            var cls = AkAspectUtility.Create<ILogicClass>(new LogicClass());
             Console.WriteLine(cls.Method3("ほげほげ"));
 
             List<string> logList = GetLogList();
@@ -55,7 +58,8 @@ namespace Akf.Core.Test
         {
             try
             {
-                var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+                //var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+                var cls = AkAspectUtility.Create<ILogicClass>(new LogicClass());
                 Console.WriteLine(cls.Method4("ほげほげ"));
                 Assert.Fail();
             }
@@ -68,9 +72,24 @@ namespace Akf.Core.Test
             logList.Clear();
         }
 
+        [TestMethod]
+        public void TestMethod5()
+        {
+
+            //AkProxy.SetAspectPartsSettingHandler(new AspectPartsSettingHandler(""));
+            //var cls = AkProxy<ILogicClass>.Create(new LogicClass());
+            var cls = AkAspectUtility.Create<ILogicClass>(new LogicClass());
+            Console.WriteLine(cls.Method("ほげほげ"));
+
+            List<string> logList = GetLogList();
+            Assert.AreEqual("Method を実行します。", logList[0]);
+            Assert.AreEqual("Method の実行が終了しました。", logList[1]);
+            logList.Clear();
+        }
+
         private static List<string> GetLogList()
         {
-            List<string> logList = LocalContext.GetData("AkLog") as List<string>;
+            List<string> logList = (List<string>)LocalContext.GetData("AkLog");
             if (logList == null)
             {
                 logList = new List<string>();
