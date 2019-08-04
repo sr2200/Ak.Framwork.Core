@@ -66,6 +66,8 @@ namespace Akf.Core.Test
             catch (ApplicationException e)
             {
                 Assert.AreEqual("TEST04", e.Message);
+
+
             }
 
             List<string> logList = GetLogList();
