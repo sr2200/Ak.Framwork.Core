@@ -31,6 +31,8 @@ namespace Akf.Core.Web.RestServer
         {
             services.AddMvc(optional =>
             {
+                optional.Filters.Add(new AkActionFilterAttribute());
+                optional.Filters.Add(new AkResultFilterAttribute());
                 optional.Filters.Add(new AkExceptionFilterAttribute());
             })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -44,7 +46,6 @@ namespace Akf.Core.Web.RestServer
         /// <param name="env">The env.</param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

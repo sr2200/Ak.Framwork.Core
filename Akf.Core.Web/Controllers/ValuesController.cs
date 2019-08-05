@@ -12,6 +12,7 @@ namespace Akf.Core.Web.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
+            Console.WriteLine("##メソッド実行：GET");
             return new string[] { "value1", "value2" };
         }
 
