@@ -27,33 +27,34 @@ namespace Akf.Core.Aspect
             return AkProxy<T>.Create(instance);
         }
 
-        /// <summary>
-        /// CurrentDomainのAssemblyからAspectクラスを取得し、Cacheします。
-        /// </summary>
-        /// <returns>Aspectインスタンス一覧</returns>
-        internal static List<IAkAspectParts> GetComposePartsForCurrentAssembly()
-        {
-            object parts = AkLocalContext.GetData(AkConstEnum.ComposeParts);
-            if (parts == null)
-            {
-                List<IAkAspectParts> aspectPartsList = new List<IAkAspectParts>();
-                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-                foreach (var asm in assemblies)
-                {
-                    var configuration = new ContainerConfiguration().WithAssembly(asm);
-                    List<IAkAspectParts> tmpLst;
-                    using (var container = configuration.CreateContainer())
-                    {
-                        tmpLst = new List<IAkAspectParts>(container.GetExports<IAkAspectParts>());
-                        aspectPartsList.AddRange(tmpLst);
-                    }
-                }
-                AkLocalContext.SetData(AkConstEnum.ComposeParts, aspectPartsList);
-                parts = aspectPartsList;
-            }
-            Debug.Assert(parts is List<IAkAspectParts>, "型不正");
-            return (List<IAkAspectParts>)parts;
-        }
+        /////// <summary>
+        /////// CurrentDomainのAssemblyからAspectクラスを取得し、Cacheします。
+        /////// </summary>
+        /////// <returns>Aspectインスタンス一覧</returns>
+        ////[Obsolete]
+        ////internal static List<IAkAspectParts> GetComposePartsForCurrentAssembly()
+        ////{
+        ////    object parts = AkLocalContext.GetData(AkConstEnum.ComposeParts);
+        ////    if (parts == null)
+        ////    {
+        ////        List<IAkAspectParts> aspectPartsList = new List<IAkAspectParts>();
+        ////        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        ////        foreach (var asm in assemblies)
+        ////        {
+        ////            var configuration = new ContainerConfiguration().WithAssembly(asm);
+        ////            List<IAkAspectParts> tmpLst;
+        ////            using (var container = configuration.CreateContainer())
+        ////            {
+        ////                tmpLst = new List<IAkAspectParts>(container.GetExports<IAkAspectParts>());
+        ////                aspectPartsList.AddRange(tmpLst);
+        ////            }
+        ////        }
+        ////        AkLocalContext.SetData(AkConstEnum.ComposeParts, aspectPartsList);
+        ////        parts = aspectPartsList;
+        ////    }
+        ////    Debug.Assert(parts is List<IAkAspectParts>, "型不正");
+        ////    return (List<IAkAspectParts>)parts;
+        ////}
 
         /// <summary>
         /// 設定ファイルからAspectクラスを取得し、Cacheします。
@@ -93,7 +94,7 @@ namespace Akf.Core.Aspect
         /// </summary>
         /// <param name="obj">The object.</param>
         /// <param name="filePath">The file path.</param>
-        internal static void SaveToBinaryFile(object obj, string filePath)
+        public static void SaveToBinaryFile(object obj, string filePath)
         {
             using (var fs = new FileStream(filePath,
                                     FileMode.Create,
@@ -105,7 +106,12 @@ namespace Akf.Core.Aspect
             }
         }
 
-        internal static object LoadFromBinaryFile(string path)
+        /// <summary>
+        /// Loads from binary file.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns></returns>
+        public static object LoadFromBinaryFile(string path)
         {
             FileStream fs = new FileStream(path,
                 FileMode.Open,

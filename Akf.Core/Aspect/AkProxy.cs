@@ -35,7 +35,7 @@ namespace Akf.Core.Aspect
             }
             else
             {
-                AkAspectPartsList = AkAspectUtility.GetComposePartsForCurrentAssembly();
+                throw new ApplicationException("設定ファイルが存在しません。");
             }
         }
 
@@ -54,18 +54,18 @@ namespace Akf.Core.Aspect
                     targetMethod.GetCustomAttribute(typeof(AkAspectAttribute)) as AkAspectAttribute;
 
                 object result;
-                if (attribute != null && attribute.IsInjection)
+                if ((attribute != null && attribute.IsInjection) || attribute == null)
                 {
                     PreProcess(id, targetMethod, args);
                     result = targetMethod.Invoke(_instance, args);
                     PostProcess(id, targetMethod, args, result);
                 }
-                else if (attribute == null)
-                {
-                    PreProcess(id, targetMethod, args);
-                    result = targetMethod.Invoke(_instance, args);
-                    PostProcess(id, targetMethod, args, result);
-                }
+                //else if (attribute == null)
+                //{
+                //    PreProcess(id, targetMethod, args);
+                //    result = targetMethod.Invoke(_instance, args);
+                //    PostProcess(id, targetMethod, args, result);
+                //}
                 else
                 {
                     result = targetMethod.Invoke(_instance, args);

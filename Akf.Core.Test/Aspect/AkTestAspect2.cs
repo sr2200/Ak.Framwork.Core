@@ -4,6 +4,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Composition;
+using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -15,38 +16,41 @@ namespace Akf.Core.Test.Aspect
     {
         public void PreProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args)
         {
-            //Console.WriteLine($"{targetMethod.Name} を実行します。");
 
-            //List<string> logList = GetLogList();
-            //logList.Add($"{targetMethod.Name} を実行します。");
         }
 
         public void PostProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args, object result)
         {
-            //Console.WriteLine($"{targetMethod.Name} の実行が終了しました。");
 
-            //List<string> logList = GetLogList();
-            //logList.Add($"{targetMethod.Name} の実行が終了しました。");
         }
 
         public void ExceptionProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args, Exception ex)
         {
-            //Console.WriteLine("例外が発生しました。");
+            try
+            {
+                var data = new AkReproductionData();
 
-            //List<string> logList = GetLogList();
-            //logList.Add("例外が発生しました。");
+                Type typ = instance.GetType();
+                data.TypeName = typ.FullName;
+                data.AssemblyName = typ.Assembly.FullName;
+                data.MethodName = targetMethod.Name;
+                data.Arguments = args;
+
+                string fileName = Path.Combine(Environment.CurrentDirectory,
+                    "Exception_" + 
+                    DateTime.Now.ToString("yyyyMMddHHmmss") + ".dat");
+                Console.WriteLine("[出力ファイル名]" + fileName);
+
+
+
+                //ファイル出力
+                AkAspectUtility.SaveToBinaryFile(data, fileName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("例外発生！！");
+                Console.WriteLine(e.ToString());
+            }
         }
-
-        //private static List<string> GetLogList()
-        //{
-        //    List<string> logList = LocalContext.GetData("AkLog") as List<string>;
-        //    if (logList == null)
-        //    {
-        //        logList = new List<string>();
-        //        LocalContext.SetData("AkLog", logList);
-        //    }
-
-        //    return logList;
-        //}
     }
 }

@@ -78,12 +78,6 @@
             <param name="instance">The instance.</param>
             <returns></returns>
         </member>
-        <member name="M:Akf.Core.Aspect.AkAspectUtility.GetComposePartsForCurrentAssembly">
-            <summary>
-            CurrentDomainのAssemblyからAspectクラスを取得し、Cacheします。
-            </summary>
-            <returns>Aspectインスタンス一覧</returns>
-        </member>
         <member name="M:Akf.Core.Aspect.AkAspectUtility.GetComposePartsForSettingsFile(System.String)">
             <summary>
             設定ファイルからAspectクラスを取得し、Cacheします。
@@ -97,6 +91,13 @@
             </summary>
             <param name="obj">The object.</param>
             <param name="filePath">The file path.</param>
+        </member>
+        <member name="M:Akf.Core.Aspect.AkAspectUtility.LoadFromBinaryFile(System.String)">
+            <summary>
+            Loads from binary file.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
         </member>
         <member name="T:Akf.Core.Aspect.AkProxy`1">
             <summary>
@@ -197,6 +198,44 @@
             <param name="args">The arguments.</param>
             <param name="ex">The ex.</param>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Akf.Core.Aspect.Parts.AkReproductionAspect">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Akf.Core.Aspect.Parts.IAkAspectParts" />
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.AkReproductionAspect.PreProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[])">
+            <summary>
+            メソッド実行前処理
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.AkReproductionAspect.PostProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[],System.Object)">
+            <summary>
+            Posts the process.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="M:Akf.Core.Aspect.Parts.AkReproductionAspect.ExceptionProcess``1(System.Guid,System.Reflection.MethodInfo,``0,System.Object[],System.Exception)">
+            <summary>
+            Exceptions the process.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="id">The identifier.</param>
+            <param name="targetMethod">The target method.</param>
+            <param name="instance"></param>
+            <param name="args">The arguments.</param>
+            <param name="ex">The ex.</param>
         </member>
         <member name="T:Akf.Core.Aspect.Parts.AkReproductionData">
             <summary>

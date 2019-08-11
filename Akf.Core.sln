@@ -14,6 +14,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akf.Core", "Akf.Core\Akf.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Akf.Core.Test", "Akf.Core.Test\Akf.Core.Test.csproj", "{F7876CF0-164D-4D5E-B0EB-994228FE89D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akf.Core.Web", "Akf.Core.Web\Akf.Core.Web.csproj", "{5A131FE6-0FEC-46C4-B9DF-2A00DC403025}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akf.Core.Web.Test", "Akf.Core.Web.Test\Akf.Core.Web.Test.csproj", "{179AC875-789C-47E5-91BD-889AB16D7A89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +32,14 @@ Global
 		{F7876CF0-164D-4D5E-B0EB-994228FE89D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7876CF0-164D-4D5E-B0EB-994228FE89D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7876CF0-164D-4D5E-B0EB-994228FE89D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A131FE6-0FEC-46C4-B9DF-2A00DC403025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A131FE6-0FEC-46C4-B9DF-2A00DC403025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A131FE6-0FEC-46C4-B9DF-2A00DC403025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A131FE6-0FEC-46C4-B9DF-2A00DC403025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{179AC875-789C-47E5-91BD-889AB16D7A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179AC875-789C-47E5-91BD-889AB16D7A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179AC875-789C-47E5-91BD-889AB16D7A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179AC875-789C-47E5-91BD-889AB16D7A89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

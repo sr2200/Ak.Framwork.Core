@@ -7,10 +7,22 @@ using System.Text;
 
 namespace Akf.Core.Aspect.Parts
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="Akf.Core.Aspect.Parts.IAkAspectParts" />
     [Export(typeof(IAkAspectParts))]
     internal class AkReproductionAspect : IAkAspectParts
     {
 
+        /// <summary>
+        /// メソッド実行前処理
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id">The identifier.</param>
+        /// <param name="targetMethod">The target method.</param>
+        /// <param name="instance"></param>
+        /// <param name="args">The arguments.</param>
         public void PreProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args)
         {
             try
@@ -37,11 +49,29 @@ namespace Akf.Core.Aspect.Parts
             }
         }
 
+        /// <summary>
+        /// Posts the process.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id">The identifier.</param>
+        /// <param name="targetMethod">The target method.</param>
+        /// <param name="instance"></param>
+        /// <param name="args">The arguments.</param>
+        /// <param name="result">The result.</param>
         public void PostProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args, object result)
         {
             //何もしない
         }
 
+        /// <summary>
+        /// Exceptions the process.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id">The identifier.</param>
+        /// <param name="targetMethod">The target method.</param>
+        /// <param name="instance"></param>
+        /// <param name="args">The arguments.</param>
+        /// <param name="ex">The ex.</param>
         public void ExceptionProcess<T>(Guid id, MethodInfo targetMethod, T instance, object[] args, Exception ex)
         {
             //何もしない
