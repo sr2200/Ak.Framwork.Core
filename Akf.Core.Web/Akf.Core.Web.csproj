@@ -3,12 +3,22 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Akf.snk</AssemblyOriginatorKeyFile>
+    <PackageProjectUrl>https://github.com/sr2200/Akf.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sr2200/Akf.Core</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE" Link="LICENSE">
       <PackagePath></PackagePath>
       <Pack>True</Pack>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
